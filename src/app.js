@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 app.use(cors({
-    origin: 'https://noteend.onrender.com', // Replace with the origin of your frontend app
+    origin: 'https://harmonious-haupia-5d56d3.netlify.app', // Replace with the origin of your frontend app
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the methods you want to allow
     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the headers you want to allow
     credentials: true // Allow cookies and authorization headers
