@@ -12,7 +12,7 @@ app.use(cors({
     credentials: true // Allow cookies and authorization headers
 }))
 
-app.options(process.env.CORS_ORIGIN, cors());
+app.options("*", cors());
 
 app.use(express.json({limit:"16kb"}))
 app.use(express.static("public"));
