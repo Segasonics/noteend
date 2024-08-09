@@ -4,13 +4,15 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-app.options('*', cors());
+
 app.use(cors({
     origin: "https://notpet.netlify.app", // Replace with the origin of your frontend app
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the methods you want to allow
     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the headers you want to allow
     credentials: true // Allow cookies and authorization headers
 }))
+
+app.options(process.env.CORS_ORIGIN, cors());
 
 app.use(express.json({limit:"16kb"}))
 app.use(express.static("public"));
