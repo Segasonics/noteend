@@ -11,7 +11,11 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the headers you want to allow
     credentials: true // Allow cookies and authorization headers
 }))
-
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://notepet.netlify.app");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
 app.options("*", cors());
 
 app.use(express.json({limit:"16kb"}))
