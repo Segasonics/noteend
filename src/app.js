@@ -6,13 +6,20 @@ const app = express();
 
 
 app.use(cors({
-    origin:process.env.CORS_ORIGIN || 8000, // Replace with the origin of your frontend app
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the methods you want to allow
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify the headers you want to allow
-    credentials: true // Allow cookies and authorization headers
-}))
+    origin: process.env.CORS_ORIGIN || "https://notepet.netlify.app", 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 
-app.options("*", cors());
+
+app.options("*", cors({
+    origin: process.env.CORS_ORIGIN || "https://notepet.netlify.app",
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
+
 
 app.use(express.json({limit:"16kb"}))
 app.use(express.static("public"));
