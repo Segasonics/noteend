@@ -126,6 +126,7 @@ const generateToken=requestHandler(async(req,res)=>{
         throw new ApiError(401,"Unauthorised")
     }
     return res.status(200)
+    .cookie("refreshToken", refreshToken, options)
     .json(new ApiResponse(201,"Access granted"))
 })
 export { registerUser, loginUser,logOutUser ,generateToken}
