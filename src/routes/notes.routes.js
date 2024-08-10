@@ -8,7 +8,7 @@ const router =Router();
 router.route("/createnote").post(upload.single("image"),verifyJWT,createNote)
 router.route("/updatenote/:_id").put(verifyJWT,updateNote)
 router.route("/deletenote/:_id").delete(verifyJWT,deleteNote)
-router.route("/fetchallnote").get(fetchAllNotes)
+router.route("/fetchallnote").get(verifyJWT,fetchAllNotes)
 
 
 export default router;

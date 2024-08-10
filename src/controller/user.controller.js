@@ -52,7 +52,6 @@ const registerUser = requestHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: true,
-        sameSite:none
     }
     return res.status(201)
          .cookie("accessToken", accessToken, options)
@@ -86,7 +85,6 @@ const loginUser = requestHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: true,
-        sameSite:none
     }
 
     return res
@@ -119,7 +117,6 @@ const logOutUser=requestHandler(async(req,res)=>{
     const options={
         httpOnly:true,
         secure:true,
-        sameSite:none
     }
 
     return res.status(200)
@@ -133,6 +130,11 @@ const generateToken=requestHandler(async(req,res)=>{
 
     if(!refreshToken){
         throw new ApiError(401,"Unauthorised")
+    }
+
+    const options={
+        httpOnly:true,
+        secure:true,
     }
     return res.status(200)
     .cookie("refreshToken", refreshToken, options)
