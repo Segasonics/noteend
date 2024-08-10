@@ -130,6 +130,7 @@ const logOutUser=requestHandler(async(req,res)=>{
 
 const generateToken=requestHandler(async(req,res)=>{
     const refreshToken = req.cookies?.refreshToken;
+    console.log("Cookies/refresToke received:", req.cookies);
 
     if(!refreshToken){
         throw new ApiError(401,"Unauthorised")
@@ -142,6 +143,6 @@ const generateToken=requestHandler(async(req,res)=>{
     }
     return res.status(200)
     .cookie("refreshToken", refreshToken, options)
-    .json(new ApiResponse(201,"Access granted"))
+    .json(new ApiResponse(200,"Access granted"))
 })
 export { registerUser, loginUser,logOutUser ,generateToken}
