@@ -41,7 +41,7 @@ const registerUser = requestHandler(async (req, res) => {
         password
     })
 
-
+    const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user?._id);
 
     const findUser = await User.findById(user._id).select("-password -refreshToken");
 
@@ -49,7 +49,14 @@ const registerUser = requestHandler(async (req, res) => {
         throw new ApiError(500, "Sorry! something went wrong while registering")
     }
 
+    const options = {
+        httpOnly: true,
+        secure: true,
+        sameSite:none
+    }
     return res.status(201)
+         .cookie("accessToken", accessToken, options)
+         .cookie("refreshToken", refreshToken, options)
         .json(new ApiResponse(200, findUser, "User registered succcessfully"))
 })
 
