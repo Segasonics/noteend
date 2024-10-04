@@ -6,7 +6,9 @@ const app = express();
 
 
 app.use(cors({
+
     origin: process.env.CORS_ORIGIN || "https://notepet.netlify.app", 
+   // origin: process.env.CORS_ORIGIN || "http://localhost:5173", 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -14,7 +16,9 @@ app.use(cors({
 
 
 app.options("*", cors({
+
     origin: process.env.CORS_ORIGIN || "https://notepet.netlify.app",
+    //origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],

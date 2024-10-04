@@ -97,7 +97,7 @@ console.log(note.noteOwner,req.user._id)
 //fetchallnotes
 const fetchAllNotes=requestHandler(async(req,res)=>{
     console.log("request received")
-    const notes=await Note.find({noteOwner:req.user._id});
+    const notes=await Note.find({});
 
     if(!notes || notes.length===0){
         throw new ApiError(400,"Note not found")
