@@ -41,10 +41,10 @@ const createNote=requestHandler(async(req,res)=>{
 const updateNote=requestHandler(async(req,res)=>{
     const{title,description}=req.body;
     const noteId=req.params._id
-    if(!title && !description){
+    if(!title || !description){
         throw new ApiError(400,"All fields are required")
     }
-
+    
     const newNote={}
     if(title){newNote.title = title}
     if(description){newNote.description = description}
